@@ -1,1 +1,23 @@
-<p>user-view works!</p>
+<div class="container mt-5">
+  @if (user()) {
+    <div class="card shadow" style="max-width: 480px; margin: 0 auto;">
+      <img [src]="user()!.image" class="card-img-top" [alt]="user()!.first_name"
+           style="height: 260px; object-fit: cover;">
+      <div class="card-body text-center">
+        <h4 class="mb-1">{{ user()!.first_name }} {{ user()!.last_name }}</h4>
+        <p class="text-info fw-bold mb-1">@{{ user()!.username }}</p>
+        <p class="text-muted small mb-3">{{ user()!.email }}</p>
+
+        <div class="d-flex gap-2 justify-content-center flex-wrap">
+          <a routerLink="/home" class="btn btn-secondary btn-sm">Volver</a>
+          <a [routerLink]="['/updateuser', user()!._id]" class="btn btn-warning btn-sm">Actualizar</a>
+          <button (click)="deleteUser()" class="btn btn-danger btn-sm">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="text-center mt-5">
+      <p class="text-muted">Cargando datos del usuario...</p>
+    </div>
+  }
+</div>

@@ -1,1 +1,30 @@
-<p>user-list works!</p>
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0">Usuarios</h2>
+    <a routerLink="/nuevo-usuario" class="btn btn-primary btn-sm">+ Nuevo usuario</a>
+  </div>
+
+  <div class="row">
+    @for (user of usersList(); track user._id) {
+      <div class="col-12 col-md-4 col-lg-3 mb-4">
+        <div class="card h-100 shadow-sm">
+          <img [src]="user.image" class="card-img-top" [alt]="user.first_name"
+               style="height: 200px; object-fit: cover;">
+          <div class="card-body text-center">
+            <h6 class="card-title mb-1">{{ user.first_name }} {{ user.last_name }}</h6>
+            <p class="small text-muted mb-3">{{ user.email }}</p>
+            <div class="d-flex gap-1 justify-content-center flex-wrap">
+              <a [routerLink]="['/usuario', user._id]" class="btn btn-info btn-sm text-white">Ver detalle</a>
+              <a [routerLink]="['/nuevo-usuario']" class="btn btn-warning btn-sm">Actualizar</a>
+              <button (click)="deleteUser(user)" class="btn btn-danger btn-sm">Borrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    } @empty {
+      <div class="col-12 text-center mt-5">
+        <p class="text-muted">Cargando usuarios...</p>
+      </div>
+    }
+  </div>
+</div>
