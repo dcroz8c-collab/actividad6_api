@@ -1,49 +1,64 @@
-<div class="container mt-5" style="max-width: 540px;">
-  <h3 class="mb-4">{{ isEditMode() ? 'Actualizar usuario' : 'Nuevo usuario' }}</h3>
+<div class="container-fluid px-0">
 
-  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-
-    <div class="mb-3">
-      <label class="form-label">Nombre</label>
-      <input type="text" class="form-control" formControlName="first_name"
-             [class.is-invalid]="isInvalid('first_name')">
-      <div class="invalid-feedback">El nombre debe tener al menos 2 caracteres.</div>
+  <div style="background-color: #2d3561; padding: 28px 40px;">
+    <div class="container">
+      <p class="mb-0" style="color: #a0b0e0; font-size: 20px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500;">Panel de gestión</p>
+      <h1 class="mb-0 fw-semibold" style="color: white; font-size: 40px;">
+        {{ isEditMode() ? 'Actualizar usuario' : 'Nuevo usuario' }}
+      </h1>
     </div>
+  </div>
 
-    <div class="mb-3">
-      <label class="form-label">Apellido</label>
-      <input type="text" class="form-control" formControlName="last_name"
-             [class.is-invalid]="isInvalid('last_name')">
-      <div class="invalid-feedback">El apellido debe tener al menos 2 caracteres.</div>
-    </div>
+  <div class="container mt-4" style="max-width: 600px;">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
 
-    <div class="mb-3">
-      <label class="form-label">Nombre de usuario</label>
-      <input type="text" class="form-control" formControlName="username"
-             [class.is-invalid]="isInvalid('username')">
-      <div class="invalid-feedback">El nombre de usuario debe tener al menos 3 caracteres.</div>
-    </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold" style="font-size: 25px;">Nombre</label>
+        <input type="text" class="form-control" style="font-size: 25px; padding: 10px 20px;" formControlName="first_name"
+               [class.is-invalid]="isInvalid('first_name')">
+        <div class="invalid-feedback" style="font-size: 20px;">El nombre debe tener al menos 2 caracteres.</div>
+      </div>
 
-    <div class="mb-3">
-      <label class="form-label">Email</label>
-      <input type="email" class="form-control" formControlName="email"
-             [class.is-invalid]="isInvalid('email')">
-      <div class="invalid-feedback">Introduce un email válido (ejemplo@dominio.com).</div>
-    </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold" style="font-size: 25px;">Apellido</label>
+        <input type="text" class="form-control" style="font-size: 25px; padding: 10px 20px;" formControlName="last_name"
+               [class.is-invalid]="isInvalid('last_name')">
+        <div class="invalid-feedback" style="font-size: 20px;">El apellido debe tener al menos 2 caracteres.</div>
+      </div>
 
-    <div class="mb-4">
-      <label class="form-label">URL de imagen</label>
-      <input type="url" class="form-control" formControlName="image"
-             [class.is-invalid]="isInvalid('image')">
-      <div class="invalid-feedback">Introduce una URL válida (debe empezar por http:// o https://).</div>
-    </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold" style="font-size: 25px;">Nombre de usuario</label>
+        <input type="text" class="form-control" style="font-size: 25px; padding: 10px 20px;" formControlName="username"
+               [class.is-invalid]="isInvalid('username')">
+        <div class="invalid-feedback" style="font-size: 20px;">El nombre de usuario debe tener al menos 3 caracteres.</div>
+      </div>
 
-    <div class="d-flex gap-2">
-      <button type="submit" class="btn btn-primary">
-        {{ isEditMode() ? 'Actualizar' : 'Guardar' }}
-      </button>
-      <a routerLink="/home" class="btn btn-secondary">Cancelar</a>
-    </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold" style="font-size: 25px;">Email</label>
+        <input type="email" class="form-control" style="font-size: 25px; padding: 10px 20px;" formControlName="email"
+               [class.is-invalid]="isInvalid('email')">
+        <div class="invalid-feedback" style="font-size: 20px;">Introduce un email válido (ejemplo@dominio.com).</div>
+      </div>
 
-  </form>
+      <div class="mb-4">
+        <label class="form-label fw-semibold" style="font-size: 25px;">URL de imagen</label>
+        <input type="url" class="form-control" style="font-size: 25px; padding: 10px 20px;" formControlName="image"
+               [class.is-invalid]="isInvalid('image')">
+        <div class="invalid-feedback" style="font-size: 20px;">Introduce una URL válida (debe empezar por http:// o https://).</div>
+      </div>
+
+      <div class="d-flex gap-2">
+        <button type="submit" class="btn px-4 py-2"
+                style="background-color: #2d3561; color: white; font-size: 25px; border-radius: 6px;">
+          {{ isEditMode() ? 'Actualizar' : 'Guardar' }}
+        </button>
+        <a routerLink="/home" class="btn px-4 py-2"
+           style="background-color: #4a5899; color: white; font-size: 25px; border-radius: 6px;">
+          Cancelar
+        </a>
+      </div>
+
+    </form>
+  </div>
+
 </div>
