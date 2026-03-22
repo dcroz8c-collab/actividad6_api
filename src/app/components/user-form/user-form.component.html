@@ -1,1 +1,49 @@
-<p>user-form works!</p>
+<div class="container mt-5" style="max-width: 540px;">
+  <h3 class="mb-4">{{ isEditMode() ? 'Actualizar usuario' : 'Nuevo usuario' }}</h3>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input type="text" class="form-control" formControlName="first_name"
+             [class.is-invalid]="isInvalid('first_name')">
+      <div class="invalid-feedback">El nombre debe tener al menos 2 caracteres.</div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Apellido</label>
+      <input type="text" class="form-control" formControlName="last_name"
+             [class.is-invalid]="isInvalid('last_name')">
+      <div class="invalid-feedback">El apellido debe tener al menos 2 caracteres.</div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Nombre de usuario</label>
+      <input type="text" class="form-control" formControlName="username"
+             [class.is-invalid]="isInvalid('username')">
+      <div class="invalid-feedback">El nombre de usuario debe tener al menos 3 caracteres.</div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" formControlName="email"
+             [class.is-invalid]="isInvalid('email')">
+      <div class="invalid-feedback">Introduce un email válido (ejemplo@dominio.com).</div>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label">URL de imagen</label>
+      <input type="url" class="form-control" formControlName="image"
+             [class.is-invalid]="isInvalid('image')">
+      <div class="invalid-feedback">Introduce una URL válida (debe empezar por http:// o https://).</div>
+    </div>
+
+    <div class="d-flex gap-2">
+      <button type="submit" class="btn btn-primary">
+        {{ isEditMode() ? 'Actualizar' : 'Guardar' }}
+      </button>
+      <a routerLink="/home" class="btn btn-secondary">Cancelar</a>
+    </div>
+
+  </form>
+</div>
