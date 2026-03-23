@@ -1,0 +1,47 @@
+<div class="container-fluid px-0">
+
+  <div style="background-color: #2d3561; padding: 28px 40px;">
+    <div class="container">
+      <p class="mb-0" style="color: #a0b0e0; font-size: 20px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500;">Detalle de usuario</p>
+      @if (user()) {
+        <h1 class="mb-0 fw-semibold" style="color: white; font-size: 40px;">
+          {{ user()!.first_name }} {{ user()!.last_name }}
+        </h1>
+      }
+    </div>
+  </div>
+
+  <div class="container mt-4">
+    @if (user()) {
+      <div class="card border-0" style="max-width: 480px; border-radius: 20px; overflow: hidden; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.07);">
+        <img [src]="user()!.image" class="card-img-top" [alt]="user()!.first_name"
+             style="height: 280px; object-fit: cover;">
+        <div class="card-body px-4 py-4">
+          <p class="mb-1" style="color: #a0b0e0; font-size: 20px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500;">NOMBRE DE USUARIO</p>
+          <p class="fw-semibold mb-3" style="font-size: 22px;">{{ user()!.username }}</p>
+
+          <p class="mb-1" style="color: #a0b0e0; font-size: 20px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500;">EMAIL</p>
+          <p class="fw-semibold mb-4" style="font-size: 22px;">{{ user()!.email }}</p>
+
+          <div class="d-flex gap-2">
+            <a routerLink="/home" class="btn btn-sm px-3 py-2"
+               style="background-color: #2d3561; color: white; font-size: 20px; border-radius: 6px;">
+              Volver
+            </a>
+            <a [routerLink]="['/updateuser', user()!._id]" class="btn btn-sm px-3 py-2"
+               style="background-color: #4a5899; color: white; font-size: 20px; border-radius: 6px;">
+              Editar
+            </a>
+            <button (click)="deleteUser()" class="btn btn-sm px-3 py-2"
+                    style="background-color: #e63946; color: white; font-size: 20px; border-radius: 6px;">
+              Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+    } @else {
+      <p style="color: #999; font-size: 16px;">Cargando datos del usuario...</p>
+    }
+  </div>
+
+</div>
