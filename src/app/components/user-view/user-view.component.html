@@ -12,7 +12,7 @@
   </div>
 
   <div class="container mt-4">
-    @if (user()) {
+    @if (user() && user()?._id) {
       <div class="card border-0" style="max-width: 480px; border-radius: 20px; overflow: hidden; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.07);">
         <img [src]="user()!.image" class="card-img-top" [alt]="user()!.first_name"
              style="height: 280px; object-fit: cover;">
@@ -39,9 +39,21 @@
           </div>
         </div>
       </div>
-    } @else {
-      <p style="color: #999; font-size: 16px;">Cargando datos del usuario...</p>
-    }
+} @else if (user() === null) {
+  <div class="container mt-5">
+    <div class="alert alert-danger shadow-lg text-center p-5 border-0">
+      <h2 class="display-5 fw-bold mb-4">¡Usuario no encontrado!</h2>
+      <p class="fs-4 text-muted mb-4">
+        Lo sentimos, el ID solicitado no existe en la base de datos de <strong>Peoply</strong>.
+      </p>
+      <div class="mt-4">
+        <a routerLink="/home" class="btn btn-danger btn-lg px-5 shadow-sm">
+          <i class="bi bi-arrow-left"></i> Volver al listado de usuarios
+        </a>
+      </div>
+    </div>
+  </div>
+}
   </div>
 
 </div>
