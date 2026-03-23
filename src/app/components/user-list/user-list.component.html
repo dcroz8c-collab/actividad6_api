@@ -27,15 +27,15 @@
                   <p class="mb-3" style="font-size: 15px; color: #888;">{{ user.email }}</p>
                   <div class="mt-auto d-flex gap-1 justify-content-center">
                     <a [routerLink]="['/usuario', user._id]" class="btn btn-sm px-3 py-2"
-                      style="background-color: #2d3561; color: white; font-size: 14px; border-radius: 6px;">
+                      style="background-color: #2d3561; color: white; font-size: 16px; border-radius: 6px;">
                       Ver detalle
                     </a>
                     <a [routerLink]="['/updateuser', user._id]" class="btn btn-sm px-3 py-2"
-                      style="background-color: #4a5899; color: white; font-size: 14px; border-radius: 6px;">
+                      style="background-color: #4a5899; color: white; font-size: 16px; border-radius: 6px;">
                       Editar
                     </a>
                     <button (click)="deleteUser(user)" class="btn btn-sm px-3 py-2"
-                            style="background-color: #e63946; color: white; font-size: 14px; border-radius: 6px;">
+                            style="background-color: #e63946; color: white; font-size: 16px; border-radius: 6px;">
                       Borrar
                     </button>
                   </div>
